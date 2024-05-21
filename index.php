@@ -41,18 +41,14 @@
         }
 
         // Mostra se número é par ou ímpar ou neutro
-        if ($num == 0) {
-            $resultado .= "o número é neutro, ";
-        } else if ($num % 2 == 0) {
+        if ($num % 2 == 0) {
             $resultado .= "o número é par, ";
         } else {
             $resultado .= "o número é ímpar, ";
         }
 
-        // Mostra se número é redondo ou não redondo
-        if ($num == 0) {
-            $resultado .= "o número é neutro.";
-        } else if ($num % 10 == 0) {
+        // Mostra se número é redondo ou não 
+         if ($num % 10 == 0) {
             $resultado .= "o número é redondo.";
         } else {
             $resultado .= "o número não é redondo.";
@@ -61,7 +57,7 @@
     }
 
     if (isset($_POST['submit'])) {
-        $nums = $_POST['nums'];
+        $nums = $_POST['nume'];
         foreach ($nums as $index => $num) {
             if ($num !== "") { // Verifica se tem número nos campos
                 echo "Para o número " . ($index + 1) . ": " . examina_numero($num) . "<br>";
