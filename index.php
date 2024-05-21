@@ -10,43 +10,43 @@
 </head>
 
 <body>
-    <form method="post">
-        <label for="num">Digite um número:</label>
-        <input type="number" name="num" />
-        <input type="submit" name="submit" value="Validar" />
-    </form>
 
     <?php
 
-    //Mostra se número é positivo ou negativo
+    // Bloco de declaração de função
 
-    $num = $_POST["num"];
-    if ($num > 0) {
-        echo "O número é positivo, ";
-    } else if ($num < 0) {
-        echo "O número é negativo, ";
-    } else {
-        echo "O número 0 é neutro,";
+    function examina_numeros($num)
+    {
+        if ($num > 0) {
+            echo "O número informado é positivo";
+        } elseif ($num < 0) {
+            echo "O número informado é negativo";
+        } else {
+            echo "O número informado é neutro";
+        }
+
+        if ($num % 10 == 0) {
+            echo "O número informado é redondo";
+        } else {
+            echo "O número informado não é redondo";
+        }
+
+        if ($num % 2 == 0) {
+            echo "O número informado é par.";
+        } else {
+            echo "O número informado é ímpar.";
+        }
     }
 
-    //Mostra se número é par ou ímpar
+    //Variáveis que carregam valores para a aplicação
+    $n1 = 5;
+    $n2 = 2;
+    $n3 = -4;
+    $n4 = 0;
+    $n5 = 3;
 
-    $num = $_POST["num"];
-    if ($num % 2 == 0) {
-        echo "o número é par, ";
-    } else {
-        echo "o número é ímpar, ";
-    }
-
-    //Mostra se número é redondo
-
-    $num = $_POST["num"];
-    if ($num % 10 == 0) {
-        echo "o número é redondo.";
-    } else {
-        echo "o número não é redondo.";
-    }
-    
+    //Execução da função
+    examina_numeros($n1, $n2, $n3, $n4, $n5);
     ?>
 
 </body>
