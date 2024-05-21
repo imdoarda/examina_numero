@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>atividade números</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href=''>
+    <title>Atividade números</title>
 </head>
 
 <body>
+    <form method="post">
+        <label for="num1">Número 1:</label>
+        <input type="number" name="nume[]" /><br>
+
+        <label for="num2">Número 2:</label>
+        <input type="number" name="nume[]" /><br>
+
+        <label for="num3">Número 3:</label>
+        <input type="number" name="nume[]" /><br>
+
+        <label for="num4">Número 4:</label>
+        <input type="number" name="nume[]" /><br>
+
+        <label for="num5">Número 5:</label>
+        <input type="number" name="nume[]" /><br>
+
+        <input type="submit" name="submit" value="Validar" />
+    </form>
 
     <?php
-
-    // Bloco de declaração de função
-
-    function examina_numeros($num)
+    function examina_numero($num)
     {
+        $resultado = "";
+
+        // Mostra se número é positivo, negativo ou neutro
         if ($num > 0) {
-            echo "O número informado é positivo";
-        } elseif ($num < 0) {
-            echo "O número informado é negativo";
+            $resultado .= "O número é positivo, ";
+        } else if ($num < 0) {
+            $resultado .= "O número é negativo, ";
         } else {
-            echo "O número informado é neutro";
+            $resultado .= "O número 0 é neutro, ";
         }
 
-        if ($num % 10 == 0) {
-            echo "O número informado é redondo";
+        // Mostra se número é par ou ímpar ou neutro
+        if ($num == 0) {
+            $resultado .= "o número é neutro, ";
+        } else if ($num % 2 == 0) {
+            $resultado .= "o número é par, ";
         } else {
-            echo "O número informado não é redondo";
+            $resultado .= "o número é ímpar, ";
         }
 
-        if ($num % 2 == 0) {
-            echo "O número informado é par.";
+        // Mostra se número é redondo ou não redondo
+        if ($num == 0) {
+            $resultado .= "o número é neutro.";
+        } else if ($num % 10 == 0) {
+            $resultado .= "o número é redondo.";
         } else {
-            echo "O número informado é ímpar.";
+            $resultado .= "o número não é redondo.";
         }
+        return $resultado;
     }
 
-    //Variáveis que carregam valores para a aplicação
-    $n1 = 5;
-    $n2 = 2;
-    $n3 = -4;
-    $n4 = 0;
-    $n5 = 3;
-
-    //Execução da função
-    examina_numeros($n1, $n2, $n3, $n4, $n5);
+    if (isset($_POST['submit'])) {
+        $nums = $_POST['nums'];
+        foreach ($nums as $index => $num) {
+            if ($num !== "") { // Verifica se tem número nos campos
+                echo "Para o número " . ($index + 1) . ": " . examina_numero($num) . "<br>";
+            }
+        }
+    }
     ?>
-
 </body>
-
 </html>
