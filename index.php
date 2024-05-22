@@ -7,63 +7,42 @@
 </head>
 
 <body>
-    <form method="post">
-        <label for="num1">Número 1:</label>
-        <input type="number" name="nume[]" /><br>
-
-        <label for="num2">Número 2:</label>
-        <input type="number" name="nume[]" /><br>
-
-        <label for="num3">Número 3:</label>
-        <input type="number" name="nume[]" /><br>
-
-        <label for="num4">Número 4:</label>
-        <input type="number" name="nume[]" /><br>
-
-        <label for="num5">Número 5:</label>
-        <input type="number" name="nume[]" /><br>
-
-        <input type="submit" name="submit" value="Validar" />
-    </form>
 
     <?php
     function examina_numero($num)
     {
-        $resultado = "";
-
-        // Mostra se número é positivo, negativo ou neutro
-        if ($num > 0) {
-            $resultado .= "O número é positivo, ";
-        } else if ($num < 0) {
-            $resultado .= "O número é negativo, ";
-        } else {
-            $resultado .= "O número 0 é neutro, ";
+        if( $num % 2 == 0){
+            echo "O número $num é par, ";
+        }else{
+            echo "O número $num é ímpar, ";
         }
-
-        // Mostra se número é par ou ímpar ou neutro
-        if ($num % 2 == 0) {
-            $resultado .= "o número é par, ";
-        } else {
-            $resultado .= "o número é ímpar, ";
+        if($num % 10 == 0){
+            echo "redondo e ";
+        }else{
+            echo "não redondo e ";
         }
-
-        // Mostra se número é redondo ou não 
-         if ($num % 10 == 0) {
-            $resultado .= "o número é redondo.";
-        } else {
-            $resultado .= "o número não é redondo.";
+        if($num > 0){
+            echo "é positivo.  ";
+        }elseif($num < 0){
+            echo "é negativo.  ";
+        }else{
+            echo "é neutro.  ";
         }
-        return $resultado;
+       
     }
+    //Variáveis que carregam valores para a aplicação
+    $n1 = 5;
+    $n2 = 2; 
+    $n3 = -4; 
+    $n4 = 0; 
+    $n5 = 20; 
 
-    if (isset($_POST['submit'])) {
-        $nums = $_POST['nume'];
-        foreach ($nums as $index => $num) {
-            if ($num !== "") { // Verifica se tem número nos campos
-                echo "Para o número " . ($index + 1) . ": " . examina_numero($num) . "<br>";
-            }
-        }
-    }
+    //Execução da função
+    examina_numero($n1); 
+    examina_numero($n2); 
+    examina_numero($n3); 
+    examina_numero($n4); 
+    examina_numero($n5); 
     ?>
 </body>
 </html>
