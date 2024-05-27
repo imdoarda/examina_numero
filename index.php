@@ -9,40 +9,44 @@
 <body>
 
     <?php
-    function examina_numero($num)
+    function parImpar($num)
     {
-        if( $num % 2 == 0){
-            echo "O número $num é par, ";
-        }else{
-            echo "O número $num é ímpar, ";
+        if($num == 0){
+            echo "O número $num é neutro. ";
         }
-        if($num % 10 == 0){
-            echo "redondo e ";
+        else if( $num % 2 == 0){
+            return "O número $num é par, " . redondoNao($num) . " e " . positivoNao($num);
         }else{
-            echo "não redondo e ";
+            return "O número $num é ímpar, " . redondoNao($num) . " e " . positivoNao($num);
         }
-        if($num > 0){
-            echo "é positivo.  ";
-        }elseif($num < 0){
-            echo "é negativo.  ";
-        }else{
-            echo "é neutro.  ";
-        }
-       
     }
+
+    function redondoNao($num){
+        if($num % 10 == 0){
+            return "redondo";
+        } else{
+            return "não redondo";
+        }
+    }
+
+    function positivoNao($num){
+        if($num > 0){
+            return "positivo.";
+        }elseIF($num < 0){
+            return "negativo.";
+        }
+    }
+
     //Variáveis que carregam valores para a aplicação
-    $n1 = 5;
-    $n2 = 2; 
-    $n3 = -4; 
-    $n4 = 0; 
-    $n5 = 20; 
+    $numeros = [5, 2, -4, 0, 20]; 
 
     //Execução da função
-    examina_numero($n1); 
-    examina_numero($n2); 
-    examina_numero($n3); 
-    examina_numero($n4); 
-    examina_numero($n5); 
+    foreach ($numeros as $num){
+        echo parImpar($num) . "<br>";
+   }
+   
+     
+     
     ?>
 </body>
 </html>
